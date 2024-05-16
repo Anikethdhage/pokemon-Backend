@@ -14,7 +14,7 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private List<String> abilities = new ArrayList<>();
+    private List<String> abilities;
     private String type;
     private int hitPoints;
     private List<String> evolution;
@@ -68,6 +68,9 @@ public class Pokemon {
     }
 
     public void setHitPoints(int hitPoints) {
+        if(hitPoints > 100){
+            throw new RuntimeException("Hit points should not be greater than 100");
+        }
         this.hitPoints = hitPoints;
     }
 
